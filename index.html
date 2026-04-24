@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TuvaMama Media · 内蒙古图瓦玛玛文化传媒</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #2abfbf;
+      --teal-light: #e6f7f7;
+      --teal-dark: #1a9090;
+      --black: #111;
+      --gray: #555;
+      --light: #f8fafa;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      color: var(--black);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6vw;
+      height: 64px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(42,191,191,0.15);
+    }
+    .nav-logo {
+      font-size: 1.1rem; font-weight: 700; letter-spacing: .04em;
+      color: var(--teal-dark); text-decoration: none;
+    }
+    .nav-logo span { color: var(--black); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--gray); font-size: .9rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 6vw 80px;
+      background: linear-gradient(135deg, #e8f8f8 0%, #f0fafa 40%, #fff 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; gap: 2rem;
+    }
+    .hero-text { flex: 1; }
+    .hero-image {
+      flex: 0 0 420px; max-width: 420px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-image img {
+      width: 100%; height: auto;
+      mix-blend-mode: multiply;
+      opacity: .92;
+    }
+    @media (max-width: 768px) {
+      .hero-image { display: none; }
+    }
+    .hero-sub {
+      font-size: .85rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -.02em; color: var(--black);
+    }
+    .hero-title em {
+      font-style: normal; color: var(--teal);
+    }
+    .hero-desc {
+      margin-top: 1.6rem;
+      max-width: 520px;
+      font-size: 1.05rem; color: var(--gray); line-height: 1.8;
+    }
+    .hero-cta {
+      margin-top: 2.4rem;
+      display: inline-block;
+      padding: .8rem 2.2rem;
+      background: var(--teal);
+      color: #fff; text-decoration: none;
+      border-radius: 2px; font-size: .95rem; letter-spacing: .05em;
+      transition: background .2s, transform .2s;
+    }
+    .hero-cta:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 6vw; }
+    .section-label {
+      font-size: .78rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: .6rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700; color: var(--black); margin-bottom: 1rem;
+    }
+    .section-desc {
+      max-width: 560px; color: var(--gray); font-size: 1rem; line-height: 1.85;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: #fff; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      margin-top: 3rem;
+    }
+    .about-stat {
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+    .stat-item { border-left: 3px solid var(--teal); padding-left: 1.2rem; }
+    .stat-num {
+      font-size: 2.2rem; font-weight: 800; color: var(--teal-dark);
+      line-height: 1;
+    }
+    .stat-label { font-size: .85rem; color: var(--gray); margin-top: .3rem; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--light); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .service-card {
+      background: #fff;
+      padding: 2rem 1.8rem;
+      border-top: 3px solid var(--teal);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(42,191,191,.12);
+    }
+    .service-num {
+      font-size: .75rem; letter-spacing: .2em; color: var(--teal);
+      margin-bottom: .8rem;
+    }
+    .service-name {
+      font-size: 1.15rem; font-weight: 700; color: var(--black);
+      margin-bottom: .8rem;
+    }
+    .service-text { font-size: .9rem; color: var(--gray); line-height: 1.8; }
+
+    /* ── WHY ── */
+    #why { background: #fff; }
+    .why-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .why-item { display: flex; flex-direction: column; gap: .5rem; }
+    .why-icon {
+      width: 40px; height: 40px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .why-title { font-weight: 700; font-size: 1rem; color: var(--black); }
+    .why-text { font-size: .88rem; color: var(--gray); line-height: 1.75; }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: linear-gradient(135deg, #1a9090 0%, #2abfbf 100%);
+      color: #fff; text-align: center;
+    }
+    #contact .section-label { color: rgba(255,255,255,.7); }
+    #contact .section-title { color: #fff; }
+    #contact .section-desc { color: rgba(255,255,255,.85); margin: 0 auto 2.5rem; }
+    .contact-info {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 2rem; margin-top: 2rem;
+    }
+    .contact-item {
+      background: rgba(255,255,255,.12);
+      padding: 1.2rem 2rem;
+      border-radius: 2px; min-width: 200px;
+    }
+    .contact-item-label {
+      font-size: .75rem; letter-spacing: .15em; opacity: .7; margin-bottom: .3rem;
+    }
+    .contact-item-value { font-size: 1rem; font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black); color: rgba(255,255,255,.4);
+      text-align: center; padding: 2rem 6vw;
+      font-size: .8rem; letter-spacing: .05em;
+    }
+    footer span { color: var(--teal); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      #hero { padding-top: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">TuvaMama <span>Media</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">关于我们</a></li>
+    <li><a href="#services">核心业务</a></li>
+    <li><a href="#why">为什么选择我们</a></li>
+    <li><a href="#contact">联系我们</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-sub">Inner Mongolia Tuva Mama Culture Media</p>
+      <h1 class="hero-title">
+        全球品牌<br><em>海外声量</em><br>从这里开始
+      </h1>
+      <p class="hero-desc">
+        专注全球品牌海外市场内容传播与全域曝光支持。围绕海外可见度建设展开服务，帮助品牌在国际市场建立信任，实现稳定、真实的海外声量积累。
+      </p>
+      <a class="hero-cta" href="#services">了解我们的服务</a>
+    </div>
+    <div class="hero-image">
+      <img src="logo3d.png" alt="TuvaMama" />
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About Us</p>
+  <h2 class="section-title">内蒙古图瓦玛玛文化传媒</h2>
+  <div class="about-grid">
+    <div>
+      <p class="section-desc">
+        我们是一家专注于海外社交媒体营销的文化传媒公司，深耕 KOL/KOC 合作、素人矩阵分发与海外媒体发稿领域。凭借对全球主流平台的深度理解，帮助中国品牌在海外市场建立真实、持久的品牌影响力。
+      </p>
+    </div>
+    <div class="about-stat">
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">核心业务线</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">全球</div>
+        <div class="stat-label">主流市场覆盖</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">真实</div>
+        <div class="stat-label">海外声量积累</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">Core Business</p>
+  <h2 class="section-title">核心业务（4 大业务线）</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <p class="service-num">01</p>
+      <p class="service-name">海外 KOL 合作</p>
+      <p class="service-text">覆盖全球主流市场中大型垂类达人，提供定制化内容创作、产品测评、品牌种草等合作，快速提升品牌影响力。</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">02</p>
+      <p class="service-name">海外 KOC 合作</p>
+      <p class="service-text">对接海外本土小型优质达人与真实博主，以原生、可信的内容做深度种草，强化用户信任，助力品牌口碑建设。</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">03</p>
+      <p class="service-name">海外素人矩阵分发</p>
+      <p class="service-text">国内少有的海外素人分发机构，提供海量真实素人账号规模化铺发，帮助品牌低成本扩大声量，提升社媒搜索可见度。</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">04</p>
+      <p class="service-name">海外媒体发稿（PR）</p>
+      <p class="service-text">全球权威媒体渠道发布新闻稿、产品发布、企业介绍等内容，支持 SEO 优化与 GEO 终端执行，提升品牌海外公信力与本地化曝光。</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <p class="section-label">Why Us</p>
+  <h2 class="section-title">为什么选择我们</h2>
+  <div class="why-list">
+    <div class="why-item">
+      <div class="why-icon">🌍</div>
+      <p class="why-title">全球视野</p>
+      <p class="why-text">深耕欧美、东南亚等主流海外市场，熟悉各平台生态与本地用户习惯。</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">✅</div>
+      <p class="why-title">真实可信</p>
+      <p class="why-text">坚持真实内容策略，拒绝刷量，帮助品牌建立长期可持续的海外口碑。</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">⚡</div>
+      <p class="why-title">高效执行</p>
+      <p class="why-text">小团队快速响应，从方案到落地全程跟进，确保每一次合作高质量交付。</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🎯</div>
+      <p class="why-title">精准匹配</p>
+      <p class="why-text">根据品牌需求精准筛选达人，确保内容与受众高度契合，最大化传播效果。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">联系我们</h2>
+  <p class="section-desc">欢迎与我们探讨您的海外营销需求，我们将为您提供专属解决方案。</p>
+  <div class="contact-info">
+    <div class="contact-item">
+      <p class="contact-item-label">公司名称</p>
+      <p class="contact-item-value">内蒙古图瓦玛玛文化传媒有限公司</p>
+    </div>
+    <div class="contact-item">
+      <p class="contact-item-label">联系人</p>
+      <p class="contact-item-value">杨女士</p>
+    </div>
+    <div class="contact-item">
+      <p class="contact-item-label">WeChat ID</p>
+      <p class="contact-item-value">Tuvamama</p>
+    </div>
+    <div class="contact-item">
+      <p class="contact-item-label">官网</p>
+      <p class="contact-item-value">tuvamama.com</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 <span>TuvaMama Media</span> · 内蒙古图瓦玛玛文化传媒有限公司 · All rights reserved.
+</footer>
+
+</body>
+</html>
